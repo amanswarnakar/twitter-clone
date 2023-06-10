@@ -9,7 +9,7 @@ const NotificationsFeed = () => {
 
   useEffect(() => {
     mutateCurrentuser();
-  }, []);
+  }, [mutateCurrentuser]);
 
   if (fetchedNotifications.length === 0)
     return (
@@ -17,11 +17,15 @@ const NotificationsFeed = () => {
         No notifications
       </div>
     );
+  console.log(fetchedNotifications);
 
   return (
     <div className="flex flex-col">
       {fetchedNotifications.map((notification: Record<string, any>) => (
-        <div className="flex flex-row items-center p-6 gap-4 border-neutral-800 border-b-[1px]">
+        <div
+          key={notification.id}
+          className="flex flex-row items-center p-6 gap-4 border-neutral-800 border-b-[1px]"
+        >
           <BsTwitter color="white" size={32} />
           <p className="text-white">{notification.body}</p>
         </div>
