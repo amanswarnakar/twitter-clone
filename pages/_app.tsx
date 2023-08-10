@@ -1,3 +1,4 @@
+import Head from "next/head";
 import "@/styles/globals.css";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
@@ -10,6 +11,7 @@ import EditModal from "@/components/modals/EditModal";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
+      <Head><title>Glitter</title></Head>
       <Toaster />
       <RegisterModal />
       <LoginModal />
